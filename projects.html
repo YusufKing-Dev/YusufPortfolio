@@ -6,252 +6,464 @@
   <title>All Projects | Loid Forger – Full Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
   <style>
     :root {
-      --bg-white: #ffffff;
-      --primary-green: #00cc66;
-      --primary-soft-green: #00994d;
-      --text-dark: #0a1a2f;
-      --text-muted: #2c3e50;
-      --border-light: #e2e8f0;
-      --shadow-sm: 0 8px 20px -6px rgba(0, 0, 0, 0.05);
-      --shadow-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
-      --gradient-green: linear-gradient(135deg, #00cc66, #00994d);
+      --emerald: #0F3D3E; --emerald-light: #1a5455; --emerald-dark: #082728;
+      --crimson: #A61B2B; --crimson-light: #c22235;
+      --gold: #C8A24D; --gold-dim: rgba(200,162,77,0.25);
+      --gray-bg: #F4F5F7; --charcoal: #1C1C1C; --white: #ffffff;
+      --glass: rgba(255,255,255,0.06); --glass-border: rgba(200,162,77,0.2);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--bg-white);
-      color: var(--text-muted);
-      line-height: 1.6;
-      padding: 2rem 1rem;
-      position: relative;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Rajdhani', sans-serif; background: var(--gray-bg); color: var(--charcoal); overflow-x: hidden; }
+
+    .scroll-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--crimson)); z-index: 9999; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: rgba(15,61,62,0.97); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 0 clamp(1.5rem,5vw,4rem); height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('background.png') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 0.08;
-      z-index: -1;
-      pointer-events: none;
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
+      color: var(--white); letter-spacing: 2px; text-decoration: none;
     }
-    .container { max-width: 1400px; margin: 0 auto; }
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      text-align: center;
-      color: var(--text-dark);
-      margin-bottom: 0.5rem;
+    .nav-logo span { color: var(--gold); }
+    .nav-logo-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(200,162,77,0.5); }
+    .nav-logo-fallback {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--emerald-light); border: 1.5px solid rgba(200,162,77,0.5);
+      display: none; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
     }
-    h1 span { color: var(--primary-green); }
-    .sub { text-align: center; margin-bottom: 2rem; font-size: 1.1rem; }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(0,204,102,0.1);
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      color: var(--primary-green);
-      text-decoration: none;
-      margin-bottom: 2rem;
-      transition: 0.2s;
-      border: 1px solid rgba(0,204,102,0.3);
-      font-weight: 500;
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.65); font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+      transition: color 0.25s;
     }
-    .back-link:hover { background: var(--primary-green); color: white; }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back i { font-size: 0.75rem; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--emerald); padding: 7rem clamp(1.5rem,5vw,4rem) 4rem;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(200,162,77,0.04) 1px,transparent 1px),
+                        linear-gradient(90deg,rgba(200,162,77,0.04) 1px,transparent 1px);
+      background-size: 48px 48px;
+    }
+    .page-header::after {
+      content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%;
+      background: linear-gradient(135deg,rgba(166,27,43,0.12),transparent 60%);
+      transform: skewX(-8deg); pointer-events: none;
+    }
+    .page-header-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .page-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(166,27,43,0.18); border: 1px solid rgba(166,27,43,0.4);
+      color: #f07080; font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 1.5rem;
+    }
+    .page-tag i { color: var(--crimson); font-size: 0.55rem; }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem,6vw,4.5rem); font-weight: 700; line-height: 1.05;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .page-title em { color: var(--gold); font-style: normal; }
+    .page-sub {
+      font-size: 0.95rem; font-weight: 500; letter-spacing: 2px;
+      color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .page-desc { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.58); }
+
+    /* MAIN CONTENT */
+    .main-wrap { max-width: 1200px; margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); }
+
+    /* FILTER BAR */
+    .filter-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid rgba(15,61,62,0.12);
+    }
+    .filter-label {
+      display: flex; align-items: center; gap: 1rem;
+      color: var(--crimson); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    }
+    .filter-label::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--crimson); }
+    .project-count-badge {
+      background: var(--emerald); color: var(--gold);
+      padding: 0.3rem 0.9rem; border-radius: 2px;
+      font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 500;
+    }
+
+    /* GRID */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
-      margin-top: 1rem;
     }
+
+    /* CARD */
     .card {
-      background: white;
-      border-radius: 24px;
+      background: var(--white);
+      border: 1px solid rgba(15,61,62,0.1);
+      border-top: 3px solid var(--emerald);
       overflow: hidden;
-      border: 1px solid var(--border-light);
+      display: flex; flex-direction: column;
       transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-sm);
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+      position: relative;
+    }
+    .card::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 0; height: 0; border-style: solid;
+      border-width: 0 14px 14px 0;
+      border-color: transparent var(--emerald) transparent transparent;
+      opacity: 0.35; transition: border-color 0.3s;
     }
     .card:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary-green);
-      box-shadow: var(--shadow-hover);
+      border-top-color: var(--crimson);
+      box-shadow: 0 16px 40px rgba(15,61,62,0.14);
+      transform: translateY(-6px);
+    }
+    .card:hover::after { border-color: transparent var(--crimson) transparent transparent; }
+
+    .preview-wrap {
+      width: 100%; height: 190px; overflow: hidden;
+      background: var(--emerald-dark); position: relative;
+      border-bottom: 1px solid rgba(200,162,77,0.15);
+      flex-shrink: 0;
     }
     .preview-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background: #f1f5f9;
-      border-bottom: 1px solid var(--border-light);
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.45s ease;
     }
+    .card:hover .preview-img { transform: scale(1.04); }
+    .preview-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+    }
+    .preview-placeholder-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--gold);
+      opacity: 0.7; text-align: center; padding: 0 1rem;
+    }
+    .preview-placeholder i { font-size: 2rem; color: rgba(200,162,77,0.3); }
+
     .card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-    .card-content h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
-      color: var(--primary-soft-green);
-      margin-bottom: 0.5rem;
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 700; color: var(--emerald);
+      margin-bottom: 0.5rem; letter-spacing: 0.5px;
     }
-    .card-content p { font-size: 0.9rem; margin-bottom: 1rem; flex: 1; color: var(--text-muted); }
-    .card-links { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: auto; }
-    .card-links a {
-      text-decoration: none;
-      background: var(--gradient-green);
-      padding: 0.4rem 1rem;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: 0.2s;
+    .card-desc {
+      font-size: 0.9rem; line-height: 1.65; color: #555;
+      margin-bottom: 1.2rem; flex: 1;
     }
-    .card-links a:last-child { background: linear-gradient(135deg, #3b82f6, #1e3a8a); }
-    .card-links a:hover { transform: translateY(-2px); filter: brightness(1.05); }
-    .loader { text-align: center; padding: 3rem; font-size: 1.2rem; color: var(--primary-green); }
-    .error-message { text-align: center; padding: 2rem; background: rgba(0,0,0,0.02); border-radius: 20px; margin: 2rem; border: 1px solid var(--border-light); }
-    .retry-btn {
-      background: rgba(0,204,102,0.1);
-      border: 1px solid var(--primary-green);
-      color: var(--primary-green);
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      cursor: pointer;
-      margin-top: 1rem;
-      font-weight: 500;
+    .card-links { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: auto; }
+    .btn-demo {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--crimson); color: white;
+      padding: 0.55rem 1.2rem;
+      font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+      border-radius: 2px; transition: all 0.25s;
+      clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
     }
-    footer { text-align: center; margin-top: 3rem; padding: 1.5rem; border-top: 1px solid var(--border-light); color: var(--text-muted); }
+    .btn-demo:hover { background: var(--crimson-light); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(166,27,43,0.45); }
+    .btn-source {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--emerald);
+      padding: 0.55rem 1.2rem; border: 1px solid rgba(15,61,62,0.3);
+      font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+      border-radius: 2px; transition: all 0.25s;
+    }
+    .btn-source:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,162,77,0.06); }
+
+    /* LOADER */
+    .loader-state {
+      grid-column: 1 / -1; padding: 4rem 2rem; text-align: center;
+    }
+    .loader-icon {
+      font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem;
+      display: block; animation: spin 1.2s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+      color: var(--emerald); font-weight: 600;
+    }
+    .loader-sub { font-size: 0.85rem; color: #888; font-family: 'DM Mono', monospace; margin-top: 0.4rem; }
+
+    /* ERROR / EMPTY */
+    .error-state {
+      grid-column: 1 / -1;
+      background: var(--white); border: 1px solid rgba(15,61,62,0.1);
+      border-left: 4px solid var(--crimson); padding: 3rem 2rem; text-align: center;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    }
+    .error-state i { font-size: 2rem; color: var(--crimson); margin-bottom: 1rem; display: block; }
+    .error-state p { color: #555; margin-bottom: 0.5rem; }
+    .error-state a { color: var(--emerald); font-weight: 600; }
+
+    .footer-note {
+      grid-column: 1 / -1; text-align: center; margin-top: 1rem;
+      font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #888;
+    }
+    .footer-note i { color: var(--gold); margin-right: 0.3rem; }
+
+    .btn-retry {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: transparent; border: 1px solid rgba(200,162,77,0.4);
+      color: var(--emerald); padding: 0.65rem 1.5rem; margin-top: 1.2rem;
+      font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+      border-radius: 2px; transition: all 0.25s;
+    }
+    .btn-retry:hover { border-color: var(--emerald); background: rgba(15,61,62,0.06); }
+
+    /* CACHED NOTICE */
+    .cache-notice {
+      grid-column: 1 / -1;
+      background: rgba(200,162,77,0.08); border: 1px solid rgba(200,162,77,0.25);
+      border-left: 3px solid var(--gold); padding: 0.85rem 1.2rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.85rem; color: #555; border-radius: 2px;
+    }
+    .cache-notice i { color: var(--gold); }
+    .cache-notice button {
+      margin-left: auto; background: none; border: 1px solid var(--gold-dim);
+      color: var(--emerald); padding: 0.3rem 0.9rem; cursor: pointer;
+      font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase; border-radius: 2px; transition: 0.2s;
+    }
+    .cache-notice button:hover { background: rgba(200,162,77,0.12); border-color: var(--gold); }
+
+    /* FOOTER */
+    footer {
+      background: var(--emerald-dark); border-top: 1px solid var(--glass-border);
+      padding: 2rem clamp(1.5rem,5vw,4rem);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    footer p { color: rgba(255,255,255,0.32); font-size: 0.8rem; letter-spacing: 1px; }
+    .footer-brand {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+      color: var(--gold); font-weight: 700; letter-spacing: 2px;
+    }
+    .footer-logo-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(200,162,77,0.45); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
     @media (max-width: 700px) {
       .projects-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 1.8rem; }
+      .page-title { font-size: 2.4rem; }
+      .filter-bar { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .nav-back span { display: none; }
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
-  <h1>📁 <span>All Projects</span></h1>
-  <div class="sub">Live demos from my GitHub — every repository with a working preview</div>
-  
-  <div id="projectsContainer" class="projects-grid">
-    <div class="loader"><i class="fas fa-spinner fa-pulse"></i> Fetching all projects from GitHub...</div>
+
+<div class="scroll-bar" id="scrollBar"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="loidforger.png" alt="Loid Forger" class="nav-logo-img"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-fallback">LF</div>
+    L<span>.</span>FORGER
+  </a>
+  <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> <span>Back to Home</span></a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-tag reveal"><i class="fas fa-circle"></i> Portfolio</div>
+    <h1 class="page-title reveal">All <em>Projects</em></h1>
+    <p class="page-sub reveal">Frontend &middot; Backend &middot; Web3</p>
+    <p class="page-desc reveal">Live demos from my GitHub — every repository with a working preview.</p>
   </div>
-  <footer>
-    <p>© <span id="year"></span> Loid Forger — Full stack & Web3 developer</p>
-  </footer>
 </div>
 
+<!-- MAIN -->
+<div class="main-wrap">
+  <div class="filter-bar reveal">
+    <span class="filter-label">Portfolio</span>
+    <span class="project-count-badge" id="countBadge">Loading&hellip;</span>
+  </div>
+  <div id="projectsContainer" class="projects-grid">
+    <div class="loader-state">
+      <i class="fas fa-circle-notch loader-icon"></i>
+      <div class="loader-text">Fetching Projects</div>
+      <div class="loader-sub">Pulling from GitHub&hellip;</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">
+    <img src="loidforger.png" alt="Loid Forger" class="footer-logo-img" onerror="this.style.display='none'">
+    L. FORGER
+  </span>
+  <p>&copy; <span id="year"></span> Loid Forger. All rights reserved.</p>
+  <p style="color:rgba(255,255,255,0.18);font-size:0.7rem;letter-spacing:1px">FULL-STACK &middot; WEB3 &middot; FRONTEND &middot; BACKEND</p>
+</footer>
+
 <script>
-  (function() {
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const GITHUB_USER = 'LoidForger-dev';
-    const container = document.getElementById('projectsContainer');
-    const CACHE_KEY = 'loid_all_projects_light';
+(function() {
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    function escapeHtml(text) {
-      if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
+  const bar = document.getElementById('scrollBar');
+  window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (s / h * 100) + '%';
+  }, { passive: true });
 
-    function displayProjects(repos, isCached = false) {
-      if (!repos || repos.length === 0) {
-        container.innerHTML = `<div class="error-message">
-          <i class="fas fa-folder-open" style="font-size:2rem;"></i>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const GITHUB_USER = 'LoidForger-dev';
+  const container = document.getElementById('projectsContainer');
+  const countBadge = document.getElementById('countBadge');
+  const CACHE_KEY = 'loid_all_projects_light';
+
+  function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function buildCard(repo) {
+    const screenshotUrl = `https://api.microlink.io/?url=${encodeURIComponent(repo.homepage)}&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&waitUntil=networkidle2&force=true&ttl=86400`;
+    const card = document.createElement('article');
+    card.className = 'card reveal';
+    card.innerHTML = `
+      <div class="preview-wrap">
+        <img class="preview-img" src="${screenshotUrl}" alt="${escapeHtml(repo.name)} preview" loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="preview-placeholder" style="display:none">
+          <i class="fas fa-globe"></i>
+          <div class="preview-placeholder-name">${escapeHtml(repo.name)}</div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="card-name">${escapeHtml(repo.name)}</div>
+        <p class="card-desc">${escapeHtml(repo.description ? repo.description.slice(0, 120) : 'Professional Web3 / full-stack project with live demo.')}</p>
+        <div class="card-links">
+          <a href="${repo.homepage}" target="_blank" rel="noopener" class="btn-demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="${repo.html_url}" target="_blank" rel="noopener" class="btn-source"><i class="fab fa-github"></i> Source</a>
+        </div>
+      </div>
+    `;
+    return card;
+  }
+
+  function displayProjects(repos, isCached = false) {
+    container.innerHTML = '';
+
+    if (!repos || repos.length === 0) {
+      countBadge.textContent = '0 projects';
+      container.innerHTML = `
+        <div class="error-state">
+          <i class="fas fa-folder-open"></i>
           <p>No projects with live demos found on GitHub.</p>
-          <a href="https://github.com/${GITHUB_USER}" target="_blank" style="color:var(--primary-green);">Visit my GitHub →</a>
+          <p><a href="https://github.com/${GITHUB_USER}" target="_blank">Visit my GitHub →</a></p>
         </div>`;
-        return;
-      }
-      
-      container.innerHTML = '';
-      repos.forEach(repo => {
-        const card = document.createElement('article');
-        card.className = 'card';
-        const screenshotUrl = `https://api.microlink.io/?url=${encodeURIComponent(repo.homepage)}&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&waitUntil=networkidle2&force=true&ttl=86400`;
-        const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f8fafc'/%3E%3Ctext x='50%25' y='50%25' font-size='22' fill='%2300cc66' font-family='Orbitron' text-anchor='middle' dy='.3em'%3E${repo.name}%3C/text%3E%3C/svg%3E`;
-        
-        card.innerHTML = `
-          <img class="preview-img" src="${screenshotUrl}" alt="${repo.name} preview" loading="lazy" onerror="this.onerror=null; this.src='${fallbackSvg}';">
-          <div class="card-content">
-            <h3>${escapeHtml(repo.name)}</h3>
-            <p>${escapeHtml(repo.description ? repo.description.slice(0, 120) : 'Professional Web3 / full-stack project with live demo.')}</p>
-            <div class="card-links">
-              <a href="${repo.homepage}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-              <a href="${repo.html_url}" target="_blank" rel="noopener"><i class="fab fa-github"></i> Source Code</a>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-      
-      if (isCached) {
-        const note = document.createElement('div');
-        note.style.gridColumn = '1/-1';
-        note.style.textAlign = 'center';
-        note.style.marginTop = '1rem';
-        note.style.fontSize = '0.85rem';
-        note.innerHTML = `<i class="fas fa-database"></i> Showing cached projects (GitHub API rate limit active). 
-          <button class="retry-btn" id="retryFetchBtn"><i class="fas fa-sync-alt"></i> Retry fresh fetch</button>`;
-        container.appendChild(note);
-        document.getElementById('retryFetchBtn')?.addEventListener('click', () => fetchAllProjects(true));
+      return;
+    }
+
+    countBadge.textContent = `${repos.length} project${repos.length !== 1 ? 's' : ''}`;
+
+    if (isCached) {
+      const notice = document.createElement('div');
+      notice.className = 'cache-notice';
+      notice.innerHTML = `<i class="fas fa-database"></i> Showing cached results (GitHub API rate limit active).
+        <button id="retryBtn"><i class="fas fa-sync-alt"></i> Refresh</button>`;
+      container.appendChild(notice);
+      document.getElementById('retryBtn').addEventListener('click', () => fetchAllProjects(true));
+    }
+
+    repos.forEach((repo, i) => {
+      const card = buildCard(repo);
+      card.style.transitionDelay = (i * 0.05) + 's';
+      container.appendChild(card);
+    });
+
+    if (!isCached) {
+      const note = document.createElement('div');
+      note.className = 'footer-note';
+      note.innerHTML = `<i class="fas fa-check-circle"></i> ${repos.length} project${repos.length !== 1 ? 's' : ''} loaded from GitHub`;
+      container.appendChild(note);
+    }
+
+    // Trigger reveal on newly-added cards
+    requestAnimationFrame(() => {
+      container.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    });
+  }
+
+  async function fetchAllProjects(forceRefresh = false) {
+    container.innerHTML = `
+      <div class="loader-state">
+        <i class="fas fa-circle-notch loader-icon"></i>
+        <div class="loader-text">Fetching Projects</div>
+        <div class="loader-sub">Pulling from GitHub&hellip;</div>
+      </div>`;
+    countBadge.textContent = 'Loading…';
+
+    try {
+      const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
+      if (!response.ok) throw new Error(response.status === 403 || response.status === 429 ? 'RATE_LIMIT' : `HTTP ${response.status}`);
+      const repos = await response.json();
+      const withHomepage = repos.filter(r => r.homepage && r.homepage.trim() !== '' && !r.archived);
+      if (withHomepage.length === 0) throw new Error('NO_PROJECTS');
+      localStorage.setItem(CACHE_KEY, JSON.stringify(withHomepage));
+      displayProjects(withHomepage, false);
+    } catch (err) {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        displayProjects(JSON.parse(cached), true);
       } else {
-        const footerNote = document.createElement('p');
-        footerNote.style.gridColumn = '1/-1';
-        footerNote.style.textAlign = 'center';
-        footerNote.style.marginTop = '1.5rem';
-        footerNote.style.fontSize = '0.9rem';
-        footerNote.innerHTML = `✅ Showing ${repos.length} project${repos.length !== 1 ? 's' : ''} with live demos — directly from GitHub.`;
-        container.appendChild(footerNote);
+        countBadge.textContent = 'Error';
+        container.innerHTML = `
+          <div class="error-state">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>GitHub API rate limit reached or network issue.</p>
+            <p>View my work on <a href="https://github.com/${GITHUB_USER}" target="_blank">GitHub</a>.</p>
+            <button class="btn-retry" id="forceRetry"><i class="fas fa-redo-alt"></i> Try Again</button>
+          </div>`;
+        document.getElementById('forceRetry')?.addEventListener('click', () => fetchAllProjects(true));
       }
     }
+  }
 
-    async function fetchAllProjects(forceRefresh = false) {
-      try {
-        container.innerHTML = '<div class="loader"><i class="fas fa-spinner fa-pulse"></i> Loading latest projects from GitHub...</div>';
-        const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
-        if (!response.ok) {
-          if (response.status === 403 || response.status === 429) throw new Error('RATE_LIMIT');
-          throw new Error(`HTTP ${response.status}`);
-        }
-        const repos = await response.json();
-        const withHomepage = repos.filter(r => r.homepage && r.homepage.trim() !== '' && !r.archived);
-        if (withHomepage.length === 0) throw new Error('NO_PROJECTS');
-        
-        localStorage.setItem(CACHE_KEY, JSON.stringify(withHomepage));
-        displayProjects(withHomepage, false);
-      } catch (err) {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          displayProjects(JSON.parse(cached), true);
-        } else {
-          container.innerHTML = `
-            <div class="error-message">
-              <i class="fas fa-exclamation-triangle" style="font-size:2rem; color:#e53e3e;"></i>
-              <p>GitHub API rate limit reached or network issue.</p>
-              <p>You can still see my work directly on <a href="https://github.com/${GITHUB_USER}" target="_blank" style="color:var(--primary-green);">GitHub</a>.</p>
-              <button class="retry-btn" id="forceRetry"><i class="fas fa-redo-alt"></i> Try Again</button>
-            </div>
-          `;
-          document.getElementById('forceRetry')?.addEventListener('click', () => fetchAllProjects(true));
-        }
-      }
-    }
-
-    fetchAllProjects();
-  })();
+  fetchAllProjects();
+})();
 </script>
 </body>
 </html>
