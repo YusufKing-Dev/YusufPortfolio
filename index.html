@@ -303,6 +303,7 @@
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const form = document.getElementById('projectForm');
   const status = document.getElementById('formStatus');
+  const WEB3FORMS_ACCESS_KEY = '59872813-72bf-414c-b67e-851a7d6c3d89';
   form.addEventListener('submit', async(e)=>{
     e.preventDefault();
     status.textContent='Sending...'; status.className='form-status';
@@ -313,9 +314,10 @@
     const tl=document.getElementById('telegramLink').value.trim();
     if(!pn||!tk||!ab||!xl){status.textContent='Please fill all required fields.';status.className='form-status error';return;}
     try{
-      const res=await fetch('https://formsubmit.co/ajax/IamMaverick4@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'New Project: '+pn,_captcha:'false',_template:'table','Project Name':pn,Ticker:tk,About:ab,'X Link':xl,Telegram:tl||'Not provided'})});
-      if(res.ok){status.textContent="Message sent! I'll reply soon.";status.className='form-status success';form.reset();}
-      else throw new Error();
+      const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:WEB3FORMS_ACCESS_KEY,subject:'New Project: '+pn,from_name:pn,'Project Name':pn,Ticker:tk,About:ab,'X Link':xl,Telegram:tl||'Not provided'})});
+      const data=await res.json();
+      if(data.success){status.textContent="Message sent! I'll reply soon.";status.className='form-status success';form.reset();}
+      else throw new Error(data.message||'Submission failed');
     }catch{status.textContent='Failed. Email IamMaverick4@gmail.com directly.';status.className='form-status error';}
   });
 })();
