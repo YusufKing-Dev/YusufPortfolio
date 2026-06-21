@@ -314,11 +314,19 @@
     const tl=document.getElementById('telegramLink').value.trim();
     if(!pn||!tk||!ab||!xl){status.textContent='Please fill all required fields.';status.className='form-status error';return;}
     try{
-      const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:WEB3FORMS_ACCESS_KEY,subject:'New Project: '+pn,from_name:pn,'Project Name':pn,Ticker:tk,About:ab,'X Link':xl,Telegram:tl||'Not provided'})});
+      const controller=new AbortController();
+      const timeoutId=setTimeout(()=>controller.abort(),15000);
+      const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:WEB3FORMS_ACCESS_KEY,subject:'New Project: '+pn,from_name:pn,'Project Name':pn,Ticker:tk,About:ab,'X Link':xl,Telegram:tl||'Not provided'}),signal:controller.signal});
+      clearTimeout(timeoutId);
       const data=await res.json();
       if(data.success){status.textContent="Message sent! I'll reply soon.";status.className='form-status success';form.reset();}
       else throw new Error(data.message||'Submission failed');
-    }catch{status.textContent='Failed. Email IamMaverick4@gmail.com directly.';status.className='form-status error';}
+    }catch(err){
+      console.error('Form submission error:',err);
+      const reason=err && err.name==='AbortError' ? 'Request timed out' : (err && err.message ? err.message : 'Network error');
+      status.textContent=`Failed (${reason}). Email IamMaverick4@gmail.com directly.`;
+      status.className='form-status error';
+    }
   });
 })();
 </script>
