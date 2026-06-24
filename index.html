@@ -34,6 +34,31 @@
     #hero { background: var(--emerald); min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 7rem 2rem 5rem; }
     #hero::after { content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%; background: linear-gradient(135deg,rgba(166,27,43,0.12),transparent 60%); transform: skewX(-8deg); pointer-events: none; }
     .hero-inner { position: relative; z-index: 2; max-width: 1100px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+    /* ── Hero Banner ── */
+    .hero-banner-wrap {
+      width: 100%;
+      margin-bottom: 1.6rem;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(200,162,77,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,162,77,0.08);
+      position: relative;
+    }
+    .hero-banner-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(15,61,62,0.6) 100%);
+      pointer-events: none;
+    }
+    .hero-banner-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
     .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(166,27,43,0.18); border: 1px solid rgba(166,27,43,0.4); color: #f07080; font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 1.5rem; }
     .hero-tag i { color: var(--crimson); font-size: 0.55rem; }
     .hero-name { font-family: 'Cormorant Garamond',serif; font-size: clamp(3.2rem,7vw,5.5rem); font-weight: 700; line-height: 1.05; color: var(--white); margin-bottom: 0.3rem; }
@@ -83,7 +108,7 @@
     .skill-card h3 { font-family: 'Rajdhani',sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--charcoal); margin-bottom: 1rem; }
     .skill-card ul { list-style: none; }
     .skill-card li { font-size: 0.9rem; color: #555; padding: 0.3rem 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 0.5rem; }
-    .skill-card li::before { content: 'a'; color: var(--gold); font-weight: bold; content: '\203A'; }
+    .skill-card li::before { content: '\203A'; color: var(--gold); font-weight: bold; }
     .skill-card li:last-child { border-bottom: none; }
     .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
     .tag { background: rgba(15,61,62,0.08); color: var(--emerald); padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; border-radius: 2px; }
@@ -150,6 +175,15 @@
 <section id="hero">
   <div class="hero-inner">
     <div>
+      <!-- ── Hero Banner ── -->
+      <div class="hero-banner-wrap">
+        <img
+          src="https://res.cloudinary.com/drdrwbdkp/image/upload/v1782333577/file_00000000920c71fd9f30a59fbcf4d8cf_lv4brm.png"
+          alt="YUSUF TECH Banner"
+          loading="eager"
+        >
+      </div>
+
       <div class="hero-tag"><i class="fas fa-circle"></i> Available for hire</div>
       <h1 class="hero-name">YUSUF<em>TECH</em></h1>
       <p class="hero-role">Frontend &middot; Backend &middot; Web3</p>
