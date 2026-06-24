@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Projects | YUSUF TECH – Full Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ʏᴜꜱᴜꜰ• | Full-stack developer specializing in frontend, backend, and Web3 development. 50+ happy clients, 5-star rated." />
+  <title>ʏᴜꜱᴜꜰ• — 5-Star Web3 & Full-Stack Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <style>
     :root {
       --emerald: #0F3D3E; --emerald-light: #1a5455; --emerald-dark: #082728;
@@ -19,311 +20,403 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Rajdhani', sans-serif; background: var(--gray-bg); color: var(--charcoal); overflow-x: hidden; }
-
     .scroll-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--crimson)); z-index: 9999; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-      background: rgba(15,61,62,0.97); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 0 clamp(1.5rem,5vw,4rem); height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
-      color: var(--white); letter-spacing: 2px; text-decoration: none;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; background: rgba(15,61,62,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); padding: 0 clamp(1.5rem,5vw,4rem); height: 68px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-family: 'Cormorant Garamond',serif; font-size: 1.5rem; font-weight: 700; color: var(--white); letter-spacing: 2px; text-decoration: none; }
     .nav-logo span { color: var(--gold); }
-    .nav-logo-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(200,162,77,0.5); }
-    .nav-logo-fallback {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--emerald-light); border: 1.5px solid rgba(200,162,77,0.5);
-      display: none; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 700; color: var(--gold);
-      font-family: 'Cormorant Garamond', serif;
-    }
-    .nav-back {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      color: rgba(255,255,255,0.65); font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-      transition: color 0.25s;
-    }
-    .nav-back:hover { color: var(--gold); }
-    .nav-back i { font-size: 0.75rem; }
+    .nav-logo-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(200,162,77,0.5); display: block; }
+    .nav-logo-fallback { width: 36px; height: 36px; border-radius: 50%; background: var(--emerald-light); border: 1.5px solid rgba(200,162,77,0.5); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--gold); letter-spacing: 0; font-family: 'Cormorant Garamond',serif; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.65); font-size: 0.82rem; font-weight: 600; text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.25s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    #hero { background: var(--emerald); min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 7rem 2rem 5rem; }
+    #hero::after { content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%; background: linear-gradient(135deg,rgba(166,27,43,0.12),transparent 60%); transform: skewX(-8deg); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 2; max-width: 1100px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 
-    /* PAGE HEADER */
-    .page-header {
-      background: var(--emerald); padding: 7rem clamp(1.5rem,5vw,4rem) 4rem;
-      position: relative; overflow: hidden; text-align: center;
-    }
-    .page-header::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(200,162,77,0.04) 1px,transparent 1px),
-                        linear-gradient(90deg,rgba(200,162,77,0.04) 1px,transparent 1px);
-      background-size: 48px 48px;
-    }
-    .page-header::after {
-      content: ''; position: absolute; top: -40%; right: -10%; width: 55%; height: 200%;
-      background: linear-gradient(135deg,rgba(166,27,43,0.12),transparent 60%);
-      transform: skewX(-8deg); pointer-events: none;
-    }
-    .page-header-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
-    .page-tag {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(166,27,43,0.18); border: 1px solid rgba(166,27,43,0.4);
-      color: #f07080; font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px;
-      text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 1.5rem;
-    }
-    .page-tag i { color: var(--crimson); font-size: 0.55rem; }
-    .page-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem,6vw,4.5rem); font-weight: 700; line-height: 1.05;
-      color: var(--white); margin-bottom: 0.5rem;
-    }
-    .page-title em { color: var(--gold); font-style: normal; }
-    .page-sub {
-      font-size: 0.95rem; font-weight: 500; letter-spacing: 2px;
-      color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 1.5rem;
-    }
-    .page-desc { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.58); }
-
-    /* MAIN CONTENT */
-    .main-wrap { max-width: 1200px; margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); }
-
-    /* FILTER BAR */
-    .filter-bar {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
-      padding-bottom: 1.5rem; border-bottom: 1px solid rgba(15,61,62,0.12);
-    }
-    .filter-label {
-      display: flex; align-items: center; gap: 1rem;
-      color: var(--crimson); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-    }
-    .filter-label::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--crimson); }
-    .project-count-badge {
-      background: var(--emerald); color: var(--gold);
-      padding: 0.3rem 0.9rem; border-radius: 2px;
-      font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 500;
-    }
-
-    /* GRID */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    /* CARD */
-    .card {
-      background: var(--white);
-      border: 1px solid rgba(15,61,62,0.1);
-      border-top: 3px solid var(--emerald);
+    /* ── Hero Banner ── */
+    .hero-banner-wrap {
+      width: 100%;
+      margin-bottom: 1.4rem;
+      border-radius: 4px;
       overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: all 0.3s ease;
-      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+      border: 1px solid rgba(200,162,77,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,162,77,0.08);
       position: relative;
+      max-height: 200px;
     }
-    .card::after {
-      content: ''; position: absolute; top: 0; right: 0;
-      width: 0; height: 0; border-style: solid;
-      border-width: 0 14px 14px 0;
-      border-color: transparent var(--emerald) transparent transparent;
-      opacity: 0.35; transition: border-color 0.3s;
+    .hero-banner-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(15,61,62,0.6) 100%);
+      pointer-events: none;
     }
-    .card:hover {
-      border-top-color: var(--crimson);
-      box-shadow: 0 16px 40px rgba(15,61,62,0.14);
-      transform: translateY(-6px);
+    .hero-banner-wrap img {
+      width: 100%;
+      height: 200px;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
     }
-    .card:hover::after { border-color: transparent var(--crimson) transparent transparent; }
 
-    .preview-wrap {
-      width: 100%; height: 190px; overflow: hidden;
-      background: var(--emerald-dark); position: relative;
-      border-bottom: 1px solid rgba(200,162,77,0.15);
-      flex-shrink: 0;
-    }
-    .preview-img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.45s ease;
-    }
-    .card:hover .preview-img { transform: scale(1.04); }
-    .preview-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 0.5rem;
-    }
-    .preview-placeholder-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem; font-weight: 700; color: var(--gold);
-      opacity: 0.7; text-align: center; padding: 0 1rem;
-    }
-    .preview-placeholder i { font-size: 2rem; color: rgba(200,162,77,0.3); }
-
-    .card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-    .card-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem; font-weight: 700; color: var(--emerald);
-      margin-bottom: 0.5rem; letter-spacing: 0.5px;
-    }
-    .card-desc {
-      font-size: 0.9rem; line-height: 1.65; color: #555;
-      margin-bottom: 1.2rem; flex: 1;
-    }
-    .card-links { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: auto; }
-    .btn-demo {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--crimson); color: white;
-      padding: 0.55rem 1.2rem;
-      font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-      border-radius: 2px; transition: all 0.25s;
-      clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
-    }
-    .btn-demo:hover { background: var(--crimson-light); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(166,27,43,0.45); }
-    .btn-source {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: transparent; color: var(--emerald);
-      padding: 0.55rem 1.2rem; border: 1px solid rgba(15,61,62,0.3);
-      font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-      border-radius: 2px; transition: all 0.25s;
-    }
-    .btn-source:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,162,77,0.06); }
-
-    /* LOADER */
-    .loader-state {
-      grid-column: 1 / -1; padding: 4rem 2rem; text-align: center;
-    }
-    .loader-icon {
-      font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem;
-      display: block; animation: spin 1.2s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loader-text {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
-      color: var(--emerald); font-weight: 600;
-    }
-    .loader-sub { font-size: 0.85rem; color: #888; font-family: 'DM Mono', monospace; margin-top: 0.4rem; }
-
-    /* ERROR / EMPTY */
-    .error-state {
-      grid-column: 1 / -1;
-      background: var(--white); border: 1px solid rgba(15,61,62,0.1);
-      border-left: 4px solid var(--crimson); padding: 3rem 2rem; text-align: center;
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-    }
-    .error-state i { font-size: 2rem; color: var(--crimson); margin-bottom: 1rem; display: block; }
-    .error-state p { color: #555; margin-bottom: 0.5rem; }
-    .error-state a { color: var(--emerald); font-weight: 600; }
-
-    .footer-note {
-      grid-column: 1 / -1; text-align: center; margin-top: 1rem;
-      font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #888;
-    }
-    .footer-note i { color: var(--gold); margin-right: 0.3rem; }
-
-    .btn-retry {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: transparent; border: 1px solid rgba(200,162,77,0.4);
-      color: var(--emerald); padding: 0.65rem 1.5rem; margin-top: 1.2rem;
-      font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
-      border-radius: 2px; transition: all 0.25s;
-    }
-    .btn-retry:hover { border-color: var(--emerald); background: rgba(15,61,62,0.06); }
-
-    /* CACHED NOTICE */
-    .cache-notice {
-      grid-column: 1 / -1;
-      background: rgba(200,162,77,0.08); border: 1px solid rgba(200,162,77,0.25);
-      border-left: 3px solid var(--gold); padding: 0.85rem 1.2rem;
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.85rem; color: #555; border-radius: 2px;
-    }
-    .cache-notice i { color: var(--gold); }
-    .cache-notice button {
-      margin-left: auto; background: none; border: 1px solid var(--gold-dim);
-      color: var(--emerald); padding: 0.3rem 0.9rem; cursor: pointer;
-      font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 1px; text-transform: uppercase; border-radius: 2px; transition: 0.2s;
-    }
-    .cache-notice button:hover { background: rgba(200,162,77,0.12); border-color: var(--gold); }
-
-    /* FOOTER */
-    footer {
-      background: var(--emerald-dark); border-top: 1px solid var(--glass-border);
-      padding: 2rem clamp(1.5rem,5vw,4rem);
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-    }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(166,27,43,0.18); border: 1px solid rgba(166,27,43,0.4); color: #f07080; font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 1.5rem; }
+    .hero-tag i { color: var(--crimson); font-size: 0.55rem; }
+    .hero-name { font-family: 'Cormorant Garamond',serif; font-size: clamp(3.2rem,7vw,5.5rem); font-weight: 700; line-height: 1.05; color: var(--white); margin-bottom: 0.3rem; }
+    .hero-name em { color: var(--gold); font-style: normal; display: block; }
+    .hero-role { font-size: 1rem; font-weight: 500; letter-spacing: 3px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 1.8rem; }
+    .hero-desc { font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.62); max-width: 440px; margin-bottom: 2.5rem; }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--crimson); color: white; padding: 0.85rem 2rem; font-family: 'Rajdhani',sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; border-radius: 2px; transition: all 0.25s; box-shadow: 0 10px 28px rgba(166,27,43,0.35), 0 2px 6px rgba(0,0,0,0.2); clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px)); }
+    .btn-primary:hover { background: var(--crimson-light); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(166,27,43,0.55), 0 4px 10px rgba(0,0,0,0.25); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.6rem; background: transparent; color: rgba(255,255,255,0.72); padding: 0.85rem 2rem; font-family: 'Rajdhani',sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(200,162,77,0.4); cursor: pointer; border-radius: 2px; transition: all 0.25s; box-shadow: 0 8px 22px rgba(0,0,0,0.25); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,162,77,0.07); box-shadow: 0 10px 26px rgba(0,0,0,0.32); }
+    .hero-card { position: relative; }
+    .hero-card-inner { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 4px; padding: 2rem; backdrop-filter: blur(8px); position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.3); }
+    .hero-card-inner::before { content: ''; position: absolute; top: 0; right: 0; width: 0; height: 0; border-style: solid; border-width: 0 40px 40px 0; border-color: transparent var(--gold) transparent transparent; opacity: 0.4; }
+    .hero-avatar-wrap { width: 100%; aspect-ratio: 1; max-width: 240px; margin: 0 auto 1.5rem; border-radius: 3px; overflow: hidden; border: 2px solid rgba(200,162,77,0.35); background: var(--emerald-dark); display: flex; align-items: center; justify-content: center; }
+    .hero-avatar-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .avatar-fallback { font-family: 'Cormorant Garamond',serif; font-size: 5rem; font-weight: 700; color: var(--gold); opacity: 0.5; }
+    .dossier-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(200,162,77,0.1); }
+    .dossier-row:last-child { border-bottom: none; }
+    .dossier-label { color: var(--gold); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; min-width: 80px; font-size: 0.7rem; }
+    .dossier-val { color: rgba(255,255,255,0.72); font-family: 'DM Mono',monospace; font-size: 0.78rem; }
+    .stat-badge { position: absolute; background: var(--crimson); color: white; padding: 0.5rem 0.9rem; border-radius: 2px; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; clip-path: polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px)); }
+    .badge-top { top: -14px; left: 16px; }
+    .badge-bottom { bottom: -14px; right: 16px; background: var(--emerald-dark); border: 1px solid var(--gold-dim); color: var(--gold); }
+    .stats-strip { display: grid; grid-template-columns: repeat(4,1fr); background: var(--emerald-dark); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
+    .stat-block { padding: 2.5rem 1.5rem; text-align: center; border-right: 1px solid rgba(200,162,77,0.12); transition: background 0.3s; }
+    .stat-block:last-child { border-right: none; }
+    .stat-block:hover { background: rgba(200,162,77,0.05); }
+    .stat-num { font-family: 'Cormorant Garamond',serif; font-size: 3rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .stat-lbl { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 0.4rem; }
+    .stat-stars { color: var(--gold); font-size: 0.7rem; margin-top: 0.3rem; letter-spacing: 2px; }
+    .section { padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem); max-width: 1200px; margin: 0 auto; }
+    .section-label { display: flex; align-items: center; gap: 1rem; color: var(--crimson); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; }
+    .section-label::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--crimson); }
+    h2 { font-family: 'Cormorant Garamond',serif; font-size: clamp(2.2rem,5vw,3.5rem); color: var(--emerald); font-weight: 700; line-height: 1.1; margin-bottom: 3rem; }
+    h2 span { color: var(--crimson); }
+    .section-dark { background: var(--emerald); padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem); position: relative; overflow: hidden; }
+    .section-dark-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .section-dark h2 { color: var(--white); }
+    .section-dark .section-label { color: var(--gold); }
+    .section-dark .section-label::before { background: var(--gold); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.5rem; }
+    .skill-card { background: var(--white); border: 1px solid rgba(15,61,62,0.1); border-top: 3px solid var(--emerald); padding: 1.8rem 1.5rem; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(15,61,62,0.1), 0 2px 8px rgba(0,0,0,0.06); clip-path: polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%); }
+    .skill-card:hover { border-top-color: var(--crimson); box-shadow: 0 18px 42px rgba(15,61,62,0.18), 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-6px); }
+    .skill-card-icon { font-size: 1.6rem; color: var(--emerald); margin-bottom: 1rem; transition: color 0.3s; }
+    .skill-card:hover .skill-card-icon { color: var(--crimson); }
+    .skill-card h3 { font-family: 'Rajdhani',sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--charcoal); margin-bottom: 1rem; }
+    .skill-card ul { list-style: none; }
+    .skill-card li { font-size: 0.9rem; color: #555; padding: 0.3rem 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 0.5rem; }
+    .skill-card li::before { content: '\203A'; color: var(--gold); font-weight: bold; }
+    .skill-card li:last-child { border-bottom: none; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .tag { background: rgba(15,61,62,0.08); color: var(--emerald); padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; border-radius: 2px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.8rem; margin-bottom: 2.5rem; }
+    .proj-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 4px; overflow: hidden; transition: all 0.3s; box-shadow: 0 16px 36px rgba(0,0,0,0.3); display: flex; flex-direction: column; }
+    .proj-card:hover { border-color: rgba(200,162,77,0.55); transform: translateY(-5px); box-shadow: 0 28px 52px rgba(0,0,0,0.45); }
+    .proj-preview { width: 100%; height: 200px; position: relative; overflow: hidden; background: var(--emerald-dark); flex-shrink: 0; }
+    .proj-preview iframe { width: 200%; height: 200%; transform: scale(0.5); transform-origin: top left; border: none; pointer-events: none; display: block; }
+    .proj-preview-overlay { position: absolute; inset: 0; z-index: 2; cursor: pointer; background: transparent; }
+    .proj-preview-badge { position: absolute; bottom: 8px; right: 8px; z-index: 3; background: rgba(8,39,40,0.85); border: 1px solid rgba(200,162,77,0.3); backdrop-filter: blur(6px); color: var(--gold); font-size: 0.6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.6rem; border-radius: 2px; }
+    .proj-card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .proj-card-type { font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .proj-card-title { font-family: 'Cormorant Garamond',serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; line-height: 1.2; }
+    .proj-card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; flex: 1; margin-bottom: 1.1rem; }
+    .proj-card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.1rem; }
+    .proj-card-tag { background: rgba(200,162,77,0.1); color: rgba(200,162,77,0.75); padding: 0.2rem 0.6rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px; border-radius: 2px; border: 1px solid rgba(200,162,77,0.2); }
+    .proj-card-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--gold); font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: gap 0.2s; }
+    .proj-card-link:hover { gap: 0.7rem; }
+    .work-view-more { text-align: center; }
+    @media (max-width: 900px) { .projects-grid { grid-template-columns: 1fr; } }
+    .testimonials-track-wrap { overflow: hidden; width: 100%; padding: 1rem 0; }
+    .testimonials-track { display: flex; width: max-content; animation: scrollLeft 44s linear infinite; }
+    .testimonials-track:hover { animation-play-state: paused; }
+    @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .t-card { flex: 0 0 300px; margin-right: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 3px; padding: 1.8rem; position: relative; transition: all 0.3s; box-shadow: 0 16px 36px rgba(0,0,0,0.3); }
+    .t-card::before { content: '"'; position: absolute; top: 0.5rem; left: 1rem; font-family: 'Cormorant Garamond',serif; font-size: 4rem; color: rgba(200,162,77,0.12); line-height: 1; }
+    .t-card:hover { border-color: rgba(200,162,77,0.45); background: rgba(255,255,255,0.07); }
+    .t-text { font-size: 0.92rem; line-height: 1.7; color: rgba(255,255,255,0.68); margin-bottom: 1.2rem; }
+    .t-author { font-family: 'Rajdhani',sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; }
+    .t-role { font-size: 0.75rem; color: rgba(255,255,255,0.38); margin-top: 0.1rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { font-family: 'Cormorant Garamond',serif; font-size: 1.8rem; color: var(--charcoal); margin-bottom: 1rem; }
+    .contact-info p { font-size: 1rem; color: #555; line-height: 1.75; margin-bottom: 2rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: #444; font-size: 0.9rem; }
+    .contact-item-icon { width: 40px; height: 40px; border-radius: 2px; background: rgba(15,61,62,0.08); color: var(--emerald); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-form-box { background: var(--white); border: 1px solid rgba(15,61,62,0.1); padding: 2.5rem; box-shadow: 0 20px 50px rgba(15,61,62,0.12), 0 4px 14px rgba(0,0,0,0.06); clip-path: polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg { margin-bottom: 1rem; }
+    .fg label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--emerald); margin-bottom: 0.4rem; }
+    .fg input, .fg textarea { width: 100%; padding: 0.85rem 1rem; background: var(--gray-bg); border: 1px solid rgba(15,61,62,0.15); border-radius: 2px; font-family: 'Rajdhani',sans-serif; font-size: 0.95rem; color: var(--charcoal); transition: 0.2s; }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { outline: none; border-color: var(--emerald); background: white; box-shadow: 0 0 0 3px rgba(15,61,62,0.08); }
+    .fg textarea { resize: vertical; min-height: 110px; }
+    .submit-btn { display: inline-flex; align-items: center; gap: 0.7rem; background: var(--crimson); color: white; padding: 0.95rem 2.5rem; border: none; cursor: pointer; font-family: 'Rajdhani',sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: all 0.25s; width: 100%; justify-content: center; box-shadow: 0 10px 26px rgba(166,27,43,0.3); clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px)); }
+    .submit-btn:hover { background: var(--crimson-light); transform: translateY(-2px); box-shadow: 0 14px 32px rgba(166,27,43,0.5); }
+    .form-status { margin-top: 0.8rem; font-size: 0.9rem; font-weight: 600; text-align: center; }
+    .form-status.success { color: var(--emerald); }
+    .form-status.error { color: var(--crimson); }
+    .socials-row { display: flex; justify-content: center; gap: 1.2rem; margin-top: 2.5rem; }
+    .soc { width: 52px; height: 52px; background: rgba(200,162,77,0.08); border: 1px solid var(--glass-border); border-radius: 2px; color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; text-decoration: none; transition: all 0.25s; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+    .soc:hover { background: var(--crimson); border-color: var(--crimson); color: white; transform: translateY(-4px); box-shadow: 0 6px 20px rgba(166,27,43,0.4); }
+    footer { background: var(--emerald-dark); border-top: 1px solid var(--glass-border); padding: 2rem clamp(1.5rem,5vw,4rem); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     footer p { color: rgba(255,255,255,0.32); font-size: 0.8rem; letter-spacing: 1px; }
-    .footer-brand {
-      display: flex; align-items: center; gap: 0.7rem;
-      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
-      color: var(--gold); font-weight: 700; letter-spacing: 2px;
-    }
-    .footer-logo-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(200,162,77,0.45); }
-
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .footer-brand { display: flex; align-items: center; gap: 0.7rem; font-family: 'Cormorant Garamond',serif; font-size: 1.1rem; color: var(--gold); font-weight: 700; letter-spacing: 2px; }
+    .footer-logo-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(200,162,77,0.45); display: block; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 700px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .page-title { font-size: 2.4rem; }
-      .filter-bar { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 480px) {
-      .nav-back span { display: none; }
-    }
+    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; align-items: start; } .hero-banner-wrap { max-height: none; } .hero-banner-wrap img { height: auto; } .hero-desc { margin: 0 auto 2.5rem; } .hero-cta-row { justify-content: center; } .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } .stats-strip { grid-template-columns: repeat(2,1fr); } .stat-block:nth-child(2) { border-right: none; } }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } .nav-links { display: none; } .hero-avatar-wrap { max-width: 180px; } }
   </style>
 </head>
 <body>
-
 <div class="scroll-bar" id="scrollBar"></div>
-
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="https://res.cloudinary.com/drdrwbdkp/image/upload/v1782136948/file_0000000009e071f4b9ab97bc3c31d416_gequeq.png" alt="YUSUF TECH" class="nav-logo-img"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="nav-logo-fallback">Y</div>
+  <a href="#hero" class="nav-logo">
+    <img src="https://res.cloudinary.com/drdrwbdkp/image/upload/v1782136948/file_0000000009e071f4b9ab97bc3c31d416_gequeq.png" alt="ʏᴜꜱᴜꜰ•" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="nav-logo-fallback" style="display:none">Y</div>
     YUSUF <span>TECH</span>
   </a>
-  <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> <span>Back to Home</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-header-inner">
-    <div class="page-tag reveal"><i class="fas fa-circle"></i> Portfolio</div>
-    <h1 class="page-title reveal">All <em>Projects</em></h1>
-    <p class="page-sub reveal">Frontend &middot; Backend &middot; Web3</p>
-    <p class="page-desc reveal">Live demos from my GitHub — every repository with a working preview.</p>
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <!-- ── Hero Banner ── -->
+      <div class="hero-banner-wrap">
+        <img
+          src="https://res.cloudinary.com/drdrwbdkp/image/upload/v1782333577/file_00000000920c71fd9f30a59fbcf4d8cf_lv4brm.png"
+          alt="YUSUF TECH Banner"
+          loading="eager"
+        >
+      </div>
+
+      <div class="hero-tag"><i class="fas fa-circle"></i> Available for hire</div>
+      <h1 class="hero-name">YUSUF<em>TECH</em></h1>
+      <p class="hero-role">Frontend &middot; Backend &middot; Web3</p>
+      <p class="hero-desc">Full-stack developer crafting clean interfaces and reliable systems. 50+ successful projects delivered with precision and speed.</p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> Start a Project</a>
+        <a href="projects.html" target="_blank" class="btn-outline"><i class="fas fa-folder-open"></i> View Portfolio</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="stat-badge badge-top">5-Star Developer</div>
+      <div class="hero-card-inner">
+        <div class="hero-avatar-wrap">
+          <img src="https://res.cloudinary.com/drdrwbdkp/image/upload/v1782136948/file_0000000009e071f4b9ab97bc3c31d416_gequeq.png" alt="ʏᴜꜱᴜꜰ•" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px" onerror="this.style.display='none';document.getElementById('af').style.display='flex'">
+          <div class="avatar-fallback" id="af" style="display:none">Y</div>
+        </div>
+        <div class="dossier-row"><span class="dossier-label">Status</span><span class="dossier-val">Active &mdash; 24h delivery</span></div>
+        <div class="dossier-row"><span class="dossier-label">Rating</span><span class="dossier-val">5.0 / 5.0</span></div>
+        <div class="dossier-row"><span class="dossier-label">Clients</span><span class="dossier-val">50+ completed</span></div>
+        <div class="dossier-row"><span class="dossier-label">Stack</span><span class="dossier-val">React &middot; Node &middot; Web3</span></div>
+      </div>
+      <div class="stat-badge badge-bottom">50+ Clients</div>
+    </div>
+  </div>
+</section>
+
+<div id="about">
+  <div class="section">
+    <p class="section-label reveal">The Story</p>
+    <h2 class="reveal">The Developer Behind <span>the Work</span></h2>
+    <p class="reveal" style="font-size:1.1rem;line-height:1.85;color:#444;margin-bottom:1.2rem;max-width:720px"><strong>Hi, I'm Yusuf.</strong></p>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.85;color:#555;max-width:720px;margin-bottom:1.1rem">I started building websites because I saw too many great ideas being held back by poor online presence. A strong product, business, or project deserves a website that inspires confidence from the moment someone lands on it.</p>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.85;color:#555;max-width:720px;margin-bottom:1.1rem">Today, I work with startups, Web3 projects, businesses, and personal brands to create modern, high-performance websites that look professional, communicate value clearly, and help convert visitors into customers, users, or supporters.</p>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.85;color:#555;max-width:720px;margin-bottom:1.1rem">My approach combines clean design, fast development, and attention to detail. Whether I'm building a landing page, portfolio, business website, or full Web3 platform, my goal is always the same: create a digital experience that helps my clients stand out and grow.</p>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.85;color:#555;max-width:720px;margin-bottom:1.1rem">Over the years, I've had the opportunity to work on <strong>50+ projects</strong>, helping founders and businesses bring their ideas to life online. For me, every project is more than just code &mdash; it's about helping someone build credibility, tell their story, and make a lasting first impression.</p>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.85;color:#555;max-width:720px">When I'm not developing websites, you'll usually find me exploring new technologies, refining my craft, and helping ambitious founders turn their ideas into reality.</p>
   </div>
 </div>
 
-<!-- MAIN -->
-<div class="main-wrap">
-  <div class="filter-bar reveal">
-    <span class="filter-label">Portfolio</span>
-    <span class="project-count-badge" id="countBadge">Loading&hellip;</span>
+<div id="skills" style="background:var(--white)">
+  <div class="section">
+    <p class="section-label reveal">Capabilities</p>
+    <h2 class="reveal">Skills &amp; <span>Tools</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-code"></i></div><h3>Technical</h3><ul><li>Frontend Development</li><li>Backend Development</li><li>Web3 / Blockchain</li><li>Problem Solving</li></ul></div>
+      <div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-layer-group"></i></div><h3>Frameworks</h3><div class="tag-row"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">Express</span></div></div>
+      <div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-tools"></i></div><h3>Tools</h3><ul><li>Git / GitHub</li><li>VS Code</li><li>Chrome DevTools</li></ul></div>
+      <div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-rocket"></i></div><h3>Deployment</h3><ul><li>Netlify / Vercel</li><li>Discord</li><li>Telegram</li></ul></div>
+    </div>
   </div>
-  <div id="projectsContainer" class="projects-grid">
-    <div class="loader-state">
-      <i class="fas fa-circle-notch loader-icon"></i>
-      <div class="loader-text">Fetching Projects</div>
-      <div class="loader-sub">Pulling from GitHub&hellip;</div>
+</div>
+
+<div id="work" class="section-dark">
+  <div class="section-dark-inner">
+    <p class="section-label reveal">Portfolio</p>
+    <h2 class="reveal">My <span style="color:var(--gold)">Work</span></h2>
+    <div class="projects-grid">
+
+      <!-- POSAA Official -->
+      <div class="proj-card reveal">
+        <div class="proj-preview">
+          <iframe src="https://www.posaaxrpl.com/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="proj-preview-overlay" onclick="window.open('https://www.posaaxrpl.com/','_blank')"></div>
+          <div class="proj-preview-badge">Live Preview</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-type">XRP Ledger &middot; Meme Token</div>
+          <div class="proj-card-title">POSAA Official</div>
+          <p class="proj-card-desc">Full site for the $POSAA token on the XRP Ledger. Black, gold & purple aesthetic with audio playlist, onboarding guide, and community-first design.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">HTML/CSS</span><span class="proj-card-tag">JavaScript</span><span class="proj-card-tag">XRPL</span><span class="proj-card-tag">Web3</span></div>
+          <a href="https://www.posaaxrpl.com/" target="_blank" class="proj-card-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- SLAPBULL -->
+      <div class="proj-card reveal">
+        <div class="proj-preview">
+          <iframe src="https://www.slapbull.com/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="proj-preview-overlay" onclick="window.open('https://www.slapbull.com/','_blank')"></div>
+          <div class="proj-preview-badge">Live Preview</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-type">Solana &middot; Meme Token</div>
+          <div class="proj-card-title">SLAPBULL</div>
+          <p class="proj-card-desc">High-energy memecoin landing page built for the Solana ecosystem. Aggressive branding, sharp visuals, and built to convert hype into holders from day one.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">HTML/CSS</span><span class="proj-card-tag">JavaScript</span><span class="proj-card-tag">Solana</span><span class="proj-card-tag">Web3</span></div>
+          <a href="https://www.slapbull.com/" target="_blank" class="proj-card-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- MoonX -->
+      <div class="proj-card reveal">
+        <div class="proj-preview">
+          <iframe src="http://www.moon-x.fun/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="proj-preview-overlay" onclick="window.open('http://www.moon-x.fun/','_blank')"></div>
+          <div class="proj-preview-badge">Live Preview</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-type">Web3 &middot; Token Platform</div>
+          <div class="proj-card-title">MoonX</div>
+          <p class="proj-card-desc">Sleek, space-themed token platform built to inspire confidence and community. Designed for growth with a clean layout that communicates ambition clearly.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">HTML/CSS</span><span class="proj-card-tag">JavaScript</span><span class="proj-card-tag">Web3</span></div>
+          <a href="http://www.moon-x.fun/" target="_blank" class="proj-card-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- YoloCoin -->
+      <div class="proj-card reveal">
+        <div class="proj-preview">
+          <iframe src="https://www.yolocoin.fun/" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="proj-preview-overlay" onclick="window.open('https://www.yolocoin.fun/','_blank')"></div>
+          <div class="proj-preview-badge">Live Preview</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-type">Crypto &middot; Meme Token</div>
+          <div class="proj-card-title">YoloCoin</div>
+          <p class="proj-card-desc">Fun, fast, and community-driven. The YoloCoin site captures the spirit of the project — bold personality, clear tokenomics, and a design that gets people excited.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">HTML/CSS</span><span class="proj-card-tag">JavaScript</span><span class="proj-card-tag">Crypto</span></div>
+          <a href="https://www.yolocoin.fun/" target="_blank" class="proj-card-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="work-view-more reveal">
+      <a href="projects.html" target="_blank" class="btn-outline"><i class="fas fa-folder-open"></i> View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<div id="testimonials" class="section-dark" style="padding-bottom:1rem">
+  <div class="section-dark-inner">
+    <p class="section-label reveal">Client Voices</p>
+    <h2 class="reveal">Testimonials</h2>
+  </div>
+  <div class="testimonials-track-wrap">
+    <div class="testimonials-track">
+      <div class="t-card"><p class="t-text">"Working with Yusuf was one of the best decisions for our project &mdash; he understood Web3 culture instantly."</p><div class="t-author">TaxEvasionTuna</div><div class="t-role">Core Team</div></div>
+      <div class="t-card"><p class="t-text">"We needed a site that felt serious but aligned with the memecoin space. Yusuf delivered exactly that."</p><div class="t-author">Dadacoin</div><div class="t-role">Founder</div></div>
+      <div class="t-card"><p class="t-text">"Optima-X required a modern presence. Yusuf built a site that communicates innovation perfectly."</p><div class="t-author">Optima-X</div><div class="t-role">Lead</div></div>
+      <div class="t-card"><p class="t-text">"Speed matters in Web3, and Yusuf moves fast without sacrificing quality. Highly recommended."</p><div class="t-author">WaveCoin</div><div class="t-role">Marketing</div></div>
+      <div class="t-card"><p class="t-text">"Most developers don't understand meme energy. Yusuf does &mdash; and he captures it perfectly."</p><div class="t-author">PumpCat</div><div class="t-role">Community Manager</div></div>
+      <div class="t-card"><p class="t-text">"SharedCoin needed clarity. Yusuf structured everything intuitively and made it look sharp."</p><div class="t-author">SharedCoin</div><div class="t-role">Co-Founder</div></div>
+      <div class="t-card"><p class="t-text">"Working with Yusuf was one of the best decisions for our project &mdash; he understood Web3 culture instantly."</p><div class="t-author">TaxEvasionTuna</div><div class="t-role">Core Team</div></div>
+      <div class="t-card"><p class="t-text">"We needed a site that felt serious but aligned with the memecoin space. Yusuf delivered exactly that."</p><div class="t-author">Dadacoin</div><div class="t-role">Founder</div></div>
+      <div class="t-card"><p class="t-text">"Optima-X required a modern presence. Yusuf built a site that communicates innovation perfectly."</p><div class="t-author">Optima-X</div><div class="t-role">Lead</div></div>
+      <div class="t-card"><p class="t-text">"Speed matters in Web3, and Yusuf moves fast without sacrificing quality. Highly recommended."</p><div class="t-author">WaveCoin</div><div class="t-role">Marketing</div></div>
+      <div class="t-card"><p class="t-text">"Most developers don't understand meme energy. Yusuf does &mdash; and he captures it perfectly."</p><div class="t-author">PumpCat</div><div class="t-role">Community Manager</div></div>
+      <div class="t-card"><p class="t-text">"SharedCoin needed clarity. Yusuf structured everything intuitively and made it look sharp."</p><div class="t-author">SharedCoin</div><div class="t-role">Co-Founder</div></div>
+    </div>
+  </div>
+  <div class="section-dark-inner" style="text-align:center;padding-top:3rem;padding-bottom:1rem">
+    <p class="section-label reveal" style="justify-content:center">Connect</p>
+    <h3 class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:white;margin-bottom:0.5rem;font-weight:700">Find Me Online</h3>
+    <div class="socials-row reveal">
+      <a href="https://discord.gg/fTkcwHZx" target="_blank" class="soc" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://x.com/YusufKing_0x7" target="_blank" class="soc" aria-label="X"><i class="fab fa-twitter"></i></a>
+      <a href="https://t.me/YusufKing_0x7" target="_blank" class="soc" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://github.com/YusufKing-dev" target="_blank" class="soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="stats-strip">
+  <div class="stat-block"><div class="stat-num">5.0</div><div class="stat-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="stat-lbl">Avg Rating</div></div>
+  <div class="stat-block"><div class="stat-num">50+</div><div class="stat-lbl">Happy Clients</div></div>
+  <div class="stat-block"><div class="stat-num">100x</div><div class="stat-lbl">Highest ROI</div></div>
+  <div class="stat-block"><div class="stat-num">24h</div><div class="stat-lbl">Avg Delivery</div></div>
+</div>
+
+<div id="contact">
+  <div class="section">
+    <p class="section-label reveal">Briefing Room</p>
+    <h2 class="reveal">Let's Build <span>Together</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Got a project in mind?</h3>
+        <p>Fill out the form and I'll get back to you within 24 hours. Whether it's a landing page, business website, portfolio, or full web platform &mdash; I'm ready to help.</p>
+        <div class="contact-item"><div class="contact-item-icon"><i class="fas fa-clock"></i></div><span>24h average response time</span></div>
+        <div class="contact-item"><div class="contact-item-icon"><i class="fas fa-star"></i></div><span>5.0 star rated across all projects</span></div>
+        <div class="contact-item"><div class="contact-item-icon"><i class="fas fa-shield-alt"></i></div><span>Clean code, delivered on time</span></div>
+      </div>
+      <div class="contact-form-box reveal">
+        <form id="projectForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="59872813-72bf-414c-b67e-851a7d6c3d89">
+          <input type="hidden" name="subject" value="New Project Inquiry — YUSUF TECH">
+          <input type="hidden" name="redirect" value="https://yusufking.xyz/?sent=true#contact">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-row">
+            <div class="fg"><label for="fullName">Your Name *</label><input type="text" id="fullName" name="Name" required placeholder="e.g., John Smith"></div>
+            <div class="fg"><label for="email">Email Address *</label><input type="email" id="email" name="Email" required placeholder="you@example.com"></div>
+          </div>
+          <div class="fg">
+            <label for="websiteType">Type of Website *</label>
+            <select id="websiteType" name="Website Type" required style="width:100%;padding:0.85rem 1rem;background:var(--gray-bg);border:1px solid rgba(15,61,62,0.15);border-radius:2px;font-family:'Rajdhani',sans-serif;font-size:0.95rem;color:var(--charcoal);transition:0.2s;appearance:none;cursor:pointer;">
+              <option value="" disabled selected>Select a website type...</option>
+              <option>Landing Page</option>
+              <option>Business Website</option>
+              <option>Portfolio Site</option>
+              <option>Web3 / Crypto Project</option>
+              <option>E-Commerce Store</option>
+              <option>Full Web Application</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg"><label for="projectDesc">Tell Me About Your Project *</label><textarea id="projectDesc" name="Project Description" required placeholder="Describe your idea, goals, and anything else that's helpful..." style="min-height:130px"></textarea></div>
+          <div class="fg"><label for="budget">Budget Range (optional)</label><input type="text" id="budget" name="Budget" placeholder="e.g., $500 – $1,000"></div>
+          <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send My Request</button>
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
 
 <footer>
   <span class="footer-brand">
-    <img src="https://res.cloudinary.com/drdrwbdkp/image/upload/v1782136948/file_0000000009e071f4b9ab97bc3c31d416_gequeq.png" alt="YUSUF TECH" class="footer-logo-img" onerror="this.style.display='none'">
+    <img src="https://res.cloudinary.com/drdrwbdkp/image/upload/v1782136948/file_0000000009e071f4b9ab97bc3c31d416_gequeq.png" alt="ʏᴜꜱᴜꜰ•" class="footer-logo-img" onerror="this.style.display='none'">
     YUSUF TECH
   </span>
   <p>&copy; <span id="year"></span> YUSUF TECH. All rights reserved.</p>
@@ -331,138 +424,24 @@
 </footer>
 
 <script>
-(function() {
+(function(){
   document.getElementById('year').textContent = new Date().getFullYear();
-
   const bar = document.getElementById('scrollBar');
   window.addEventListener('scroll', () => {
     const s = document.documentElement.scrollTop;
     const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    bar.style.width = (s / h * 100) + '%';
-  }, { passive: true });
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  const GITHUB_USER = 'YusufKing-dev';
-  const container = document.getElementById('projectsContainer');
-  const countBadge = document.getElementById('countBadge');
-  const CACHE_KEY = 'yusuf_all_projects_light';
-
-  function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
+    bar.style.width = (s/h*100)+'%';
+  },{passive:true});
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const form = document.getElementById('projectForm');
+  const status = document.getElementById('formStatus');
+  if (new URLSearchParams(window.location.search).get('sent') === 'true') {
+    status.textContent = "Message sent! I'll reply soon.";
+    status.className = 'form-status success';
   }
-
-  function buildCard(repo) {
-    const screenshotUrl = `https://api.microlink.io/?url=${encodeURIComponent(repo.homepage)}&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&waitUntil=networkidle2&force=true&ttl=86400`;
-    const card = document.createElement('article');
-    card.className = 'card reveal';
-    card.innerHTML = `
-      <div class="preview-wrap">
-        <img class="preview-img" src="${screenshotUrl}" alt="${escapeHtml(repo.name)} preview" loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="preview-placeholder" style="display:none">
-          <i class="fas fa-globe"></i>
-          <div class="preview-placeholder-name">${escapeHtml(repo.name)}</div>
-        </div>
-      </div>
-      <div class="card-content">
-        <div class="card-name">${escapeHtml(repo.name)}</div>
-        <p class="card-desc">${escapeHtml(repo.description ? repo.description.slice(0, 120) : 'Professional Web3 / full-stack project with live demo.')}</p>
-        <div class="card-links">
-          <a href="${repo.homepage}" target="_blank" rel="noopener" class="btn-demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-          <a href="${repo.html_url}" target="_blank" rel="noopener" class="btn-source"><i class="fab fa-github"></i> Source</a>
-        </div>
-      </div>
-    `;
-    return card;
-  }
-
-  function displayProjects(repos, isCached = false) {
-    container.innerHTML = '';
-
-    if (!repos || repos.length === 0) {
-      countBadge.textContent = '0 projects';
-      container.innerHTML = `
-        <div class="error-state">
-          <i class="fas fa-folder-open"></i>
-          <p>No projects with live demos found on GitHub.</p>
-          <p><a href="https://github.com/${GITHUB_USER}" target="_blank">Visit my GitHub →</a></p>
-        </div>`;
-      return;
-    }
-
-    countBadge.textContent = `${repos.length} project${repos.length !== 1 ? 's' : ''}`;
-
-    if (isCached) {
-      const notice = document.createElement('div');
-      notice.className = 'cache-notice';
-      notice.innerHTML = `<i class="fas fa-database"></i> Showing cached results (GitHub API rate limit active).
-        <button id="retryBtn"><i class="fas fa-sync-alt"></i> Refresh</button>`;
-      container.appendChild(notice);
-      document.getElementById('retryBtn').addEventListener('click', () => fetchAllProjects(true));
-    }
-
-    repos.forEach((repo, i) => {
-      const card = buildCard(repo);
-      card.style.transitionDelay = (i * 0.05) + 's';
-      container.appendChild(card);
-    });
-
-    if (!isCached) {
-      const note = document.createElement('div');
-      note.className = 'footer-note';
-      note.innerHTML = `<i class="fas fa-check-circle"></i> ${repos.length} project${repos.length !== 1 ? 's' : ''} loaded from GitHub`;
-      container.appendChild(note);
-    }
-
-    // Trigger reveal on newly-added cards
-    requestAnimationFrame(() => {
-      container.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    });
-  }
-
-  async function fetchAllProjects(forceRefresh = false) {
-    container.innerHTML = `
-      <div class="loader-state">
-        <i class="fas fa-circle-notch loader-icon"></i>
-        <div class="loader-text">Fetching Projects</div>
-        <div class="loader-sub">Pulling from GitHub&hellip;</div>
-      </div>`;
-    countBadge.textContent = 'Loading…';
-
-    try {
-      const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
-      if (!response.ok) throw new Error(response.status === 403 || response.status === 429 ? 'RATE_LIMIT' : `HTTP ${response.status}`);
-      const repos = await response.json();
-      const withHomepage = repos.filter(r => r.homepage && r.homepage.trim() !== '' && !r.archived);
-      if (withHomepage.length === 0) throw new Error('NO_PROJECTS');
-      localStorage.setItem(CACHE_KEY, JSON.stringify(withHomepage));
-      displayProjects(withHomepage, false);
-    } catch (err) {
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (cached) {
-        displayProjects(JSON.parse(cached), true);
-      } else {
-        countBadge.textContent = 'Error';
-        container.innerHTML = `
-          <div class="error-state">
-            <i class="fas fa-exclamation-triangle"></i>
-            <p>GitHub API rate limit reached or network issue.</p>
-            <p>View my work on <a href="https://github.com/${GITHUB_USER}" target="_blank">GitHub</a>.</p>
-            <button class="btn-retry" id="forceRetry"><i class="fas fa-redo-alt"></i> Try Again</button>
-          </div>`;
-        document.getElementById('forceRetry')?.addEventListener('click', () => fetchAllProjects(true));
-      }
-    }
-  }
-
-  fetchAllProjects();
 })();
 </script>
 </body>
